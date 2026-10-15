@@ -1,0 +1,18 @@
+{
+  "name": "nptel-dummy-portal",
+  "version": "1.0.0",
+  "private": true,
+  "description": "IIT Madras NPTEL Online Certification Portal — Antigravity Live Demo Showcase",
+  "scripts": {
+    "dev": "concurrently -n BACKEND,FRONTEND -c crimson,blue \"npm --prefix backend run dev\" \"npm --prefix frontend run dev\"",
+    "dev:backend": "npm --prefix backend run dev",
+    "dev:frontend": "npm --prefix frontend run dev",
+    "test": "npm --prefix backend test && node .agents/skills/nptel-course-ingestor/scripts/validate-course.mjs",
+    "validate:catalog": "node .agents/skills/nptel-course-ingestor/scripts/validate-course.mjs",
+    "demo:stage-hooks": "bash scripts/demo-reset.sh --stage-hooks",
+    "demo:clean": "bash scripts/demo-reset.sh --clean"
+  },
+  "devDependencies": {
+    "concurrently": "^9.0.1"
+  }
+}
