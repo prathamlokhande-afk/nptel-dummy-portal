@@ -1,0 +1,242 @@
+[
+  {
+    "id": "noc26-cs01",
+    "code": "NOC26-CS01",
+    "title": "Programming, Data Structures and Algorithms using Python",
+    "instructor": "Prof. Madhavan Mukund",
+    "institute": "IIT Madras / CMI",
+    "discipline": "Computer Science & Engineering",
+    "durationWeeks": 8,
+    "credits": 2,
+    "aicteFdpApproved": true,
+    "examRegistrationOpen": true,
+    "examDate": "2026-11-15 (09:00 IST)",
+    "enrollments": 84520,
+    "completionRate": 76,
+    "rating": 4.9,
+    "tags": ["Python", "Algorithms", "Data Structures", "Core CS"],
+    "overview": "Flagship NPTEL course covering foundational algorithms, asymptotic complexity, recursion, backtracking, dynamic programming, and graph algorithms implemented idiomatically in Python.",
+    "weeks": [
+      {
+        "weekNumber": 1,
+        "title": "Informal Introduction to Programming, Algorithms & Euclid's GCD",
+        "videoTitle": "Lecture 1.1: Euclid's Algorithm for Greatest Common Divisor",
+        "durationMinutes": 42,
+        "assignmentTitle": "Week 1 Quiz & Programming Assignment: GCD and Prime Factorization",
+        "transcripts": {
+          "en": "[00:00] Welcome to Programming, Data Structures and Algorithms using Python. Today we begin with Euclid's classic algorithm for computing the Greatest Common Divisor (GCD) of two positive integers m and n. [01:15] Instead of scanning all divisors from 1 to min(m, n), Euclid observed that if d divides both m and n, it also divides m mod n, reducing time complexity to O(log(min(m, n))).",
+          "ta": "[00:00] பைதான் (Python) பயன்படுத்தி நிரலாக்கம், தரவு கட்டமைப்புகள் மற்றும் வழிமுறைகள் பாடத்திற்கு வரவேற்கிறோம். இன்று இரண்டு நேர்மறை முழு எண்களின் மீப்பெரு பொது வகுத்தியை (GCD) கணக்கிடுவதற்கான யூக்ளிட்டின் வழிமுறையுடன் தொடங்குகிறோம். [01:15] 1 முதல் min(m, n) வரை அனைத்து வகுத்திகளையும் தேடுவதற்குப் பதிலாக, m mod n ஐப் பயன்படுத்தி நேரச் சிக்கலை O(log(min(m, n))) ஆகக் குறைக்கலாம்.",
+          "hi": "[00:00] पायथन का उपयोग करके प्रोग्रामिंग, डेटा स्ट्रक्चर्स और एल्गोरिदम पाठ्यक्रम में आपका स्वागत है। आज हम दो धनात्मक पूर्णांकों m और n के महत्तम समापवर्तक (GCD) की गणना के लिए यूक्लिड के एल्गोरिदम से शुरुआत करते हैं। [01:15] 1 से min(m, n) तक सभी भाजकों की जाँच करने के बजाय, m mod n का उपयोग करके समय जटिलता को O(log(min(m, n))) तक कम किया जा सकता है।"
+        }
+      },
+      {
+        "weekNumber": 2,
+        "title": "Python Basics: Lists, Mutability, Binary Search & Insertion Sort",
+        "videoTitle": "Lecture 2.3: Asymptotic Analysis & Binary Search over Sorted Arrays",
+        "durationMinutes": 48,
+        "assignmentTitle": "Week 2 Programming Assignment: Rotated Sorted List Search",
+        "transcripts": {
+          "en": "[00:00] In Week 2, we contrast Python's immutable tuples and strings with mutable lists, and analyze why Binary Search achieves logarithmic O(log n) lookup on random-access arrays but not on linked lists.",
+          "ta": "[00:00] வாரம் 2-இல், பைத்தானின் மாற்றக்கூடிய பட்டியல்கள் (Mutable Lists) மற்றும் இருமத் தேடல் (Binary Search) எப்படி O(log n) நேரத்தில் செயல்படுகிறது என்பதை விரிவாக ஆராய்வோம்.",
+          "hi": "[00:00] सप्ताह 2 में, हम पायथन की म्यूटेबल सूचियों (Lists) और बाइनरी सर्च के O(log n) प्रदर्शन का विश्लेषण करते हैं।"
+        }
+      },
+      {
+        "weekNumber": 3,
+        "title": "Merge Sort, Quicksort & Recurrence Relations",
+        "videoTitle": "Lecture 3.2: Divide-and-Conquer Merge Sort in O(n log n)",
+        "durationMinutes": 51,
+        "assignmentTitle": "Week 3 Assignment: Inversion Count & Stable Sorting",
+        "transcripts": {
+          "en": "[00:00] Quadratic sorts like Insertion Sort and Selection Sort hit a wall at n = 10,000 in Python. By dividing the array in half and merging sorted sublists, Merge Sort guarantees O(n log n) worst-case performance.",
+          "ta": "[00:00] பிரித்து வெல்லும் முறை (Divide and Conquer) மூலம் மெர்ஜ் சார்ட் (Merge Sort) எவ்வாறு O(n log n) நேரத்தில் வரிசைப்படுத்துகிறது என்பதைப் பார்ப்போம்.",
+          "hi": "[00:00] डिवाइड एंड कॉनकर (Divide and Conquer) तकनीक का उपयोग करके मर्ज सॉर्ट (Merge Sort) O(n log n) समय में डेटा को व्यवस्थित करता है।"
+        }
+      },
+      {
+        "weekNumber": 4,
+        "title": "Graph Representations, Breadth-First Search (BFS) & Depth-First Search (DFS)",
+        "videoTitle": "Lecture 4.1: Adjacency Lists, Queues, and Shortest Paths via BFS",
+        "durationMinutes": 55,
+        "assignmentTitle": "Week 4 Assignment: Connected Components & DAG Topological Sort",
+        "transcripts": {
+          "en": "[00:00] Graphs model networks, road maps, and prerequisite dependencies across NPTEL courses. We compare Adjacency Matrices O(V^2) with Adjacency Lists O(V + E) and trace BFS level-by-level.",
+          "ta": "[00:00] வரைபடங்கள் (Graphs), BFS மற்றும் DFS வழிமுறைகள் மூலம் குறுகிய பாதையைக் கண்டறிவது எப்படி என்பதை இந்த வாரம் கற்போம்.",
+          "hi": "[00:00] इस सप्ताह हम ग्राफ़ अभ्यावेदन (Adjacency List), BFS और DFS के माध्यम से सबसे छोटा रास्ता खोजना सीखेंगे।"
+        }
+      }
+    ]
+  },
+  {
+    "id": "noc26-cs02",
+    "code": "NOC26-CS02",
+    "title": "Deep Learning (IIT Madras)",
+    "instructor": "Prof. Mitesh M. Khapra",
+    "institute": "IIT Madras",
+    "discipline": "Computer Science & Engineering",
+    "durationWeeks": 12,
+    "credits": 3,
+    "aicteFdpApproved": true,
+    "examRegistrationOpen": true,
+    "examDate": "2026-11-22 (14:00 IST)",
+    "enrollments": 112400,
+    "completionRate": 81,
+    "rating": 4.95,
+    "tags": ["Deep Learning", "Neural Networks", "Transformers", "AI"],
+    "overview": "Rigorous mathematical and intuitive treatment of McCulloch-Pitts neurons, Perceptrons, Backpropagation, Momentum/Adam optimizers, CNNs, RNNs, Attention Mechanisms, and Transformer architectures.",
+    "weeks": [
+      {
+        "weekNumber": 1,
+        "title": "Biological Neurons to McCulloch-Pitts & Perceptron Learning Algorithm",
+        "videoTitle": "Lecture 1.4: Geometric Interpretation of the Perceptron Rule",
+        "durationMinutes": 56,
+        "assignmentTitle": "Week 1 Assignment: Linear Separability & Boolean Threshold Functions",
+        "transcripts": {
+          "en": "[00:00] Welcome to Deep Learning from IIT Madras. We start with the six jars of Machine Learning—Data, Tasks, Models, Loss Functions, Learning Algorithms, and Evaluation—before deriving the Perceptron convergence theorem.",
+          "ta": "[00:00] ஐஐடி மெட்ராஸின் ஆழ்ந்த கற்றல் (Deep Learning) பாடத்திற்கு வரவேற்கிறோம். இயந்திர கற்றலின் ஆறு அடிப்படை கூறுகள் மற்றும் பெர்செப்ட்ரான் (Perceptron) விதியை இன்று காண்போம்.",
+          "hi": "[00:00] आईआईटी मद्रास के डीप लर्निंग पाठ्यक्रम में आपका स्वागत है। आज हम मशीन लर्निंग के छह स्तंभों और परसेप्ट्रॉन लर्निंग एल्गोरिदम की ज्यामितीय व्याख्या को समझेंगे।"
+        }
+      },
+      {
+        "weekNumber": 2,
+        "title": "Sigmoid Neurons, Feedforward Networks & Backpropagation Calculus",
+        "videoTitle": "Lecture 2.2: Chain Rule and Vectorized Backpropagation",
+        "durationMinutes": 62,
+        "assignmentTitle": "Week 2 Assignment: Matrix Gradients & Cross-Entropy Loss",
+        "transcripts": {
+          "en": "[00:00] When we stack layers of Sigmoid neurons to represent arbitrary non-linear decision boundaries, how do we compute gradients with respect to millions of weights? We derive Backpropagation step by step.",
+          "ta": "[00:00] பல அடுக்கு நரம்பியல் வலைப்பின்னல்களில் பின்னோக்கி பரப்புதல் (Backpropagation) மற்றும் சங்கிலி விதியை (Chain Rule) பயன்படுத்தி சாய்வுகளை (Gradients) கணக்கிடுவோம்.",
+          "hi": "[00:00] मल्टी-लेयर न्यूरल नेटवर्क में चेन रूल (Chain Rule) और बैकप्रोपैगेशन की सहायता से ग्रेडिएंट्स की गणना कैसे की जाती है, आइए समझते हैं।"
+        }
+      }
+    ]
+  },
+  {
+    "id": "noc26-cs03",
+    "code": "NOC26-CS03",
+    "title": "Introduction to Machine Learning",
+    "instructor": "Prof. Balaraman Ravindran",
+    "institute": "IIT Madras",
+    "discipline": "Computer Science & Engineering",
+    "durationWeeks": 12,
+    "credits": 3,
+    "aicteFdpApproved": true,
+    "examRegistrationOpen": true,
+    "examDate": "2026-11-22 (09:00 IST)",
+    "enrollments": 96300,
+    "completionRate": 74,
+    "rating": 4.85,
+    "tags": ["Machine Learning", "SVM", "Bayesian", "Decision Trees"],
+    "overview": "Comprehensive foundation in statistical learning theory, bias-variance tradeoff, ridge/lasso regression, logistic regression, Support Vector Machines (SVMs), ensemble methods, and clustering.",
+    "weeks": [
+      {
+        "weekNumber": 1,
+        "title": "Statistical Decision Theory & Bias-Variance Tradeoff",
+        "videoTitle": "Lecture 1.2: Expected Prediction Error and Model Complexity",
+        "durationMinutes": 47,
+        "assignmentTitle": "Week 1 Assignment: Linear Regression & Bias-Variance Decomposition",
+        "transcripts": {
+          "en": "[00:00] Welcome to Introduction to Machine Learning at IIT Madras. Today we decompose expected squared prediction error into irreducible noise, squared bias, and model variance.",
+          "ta": "[00:00] ஐஐடி மெட்ராஸின் இயந்திர கற்றல் அறிமுகப் பாடத்திற்கு வரவேற்கிறோம். இன்று Bias மற்றும் Variance சமநிலையை கணித ரீதியாக ஆராய்வோம்.",
+          "hi": "[00:00] आईआईटी मद्रास के मशीन लर्निंग परिचय पाठ्यक्रम में आपका स्वागत है। आज हम बायस-वेरिएंस ट्रेडऑफ़ (Bias-Variance Tradeoff) का अध्ययन करेंगे।"
+        }
+      }
+    ]
+  },
+  {
+    "id": "noc26-ee04",
+    "code": "NOC26-EE04",
+    "title": "VLSI Signal Processing & Digital IC Design",
+    "instructor": "Prof. Janakiraman Viraraghavan",
+    "institute": "IIT Madras",
+    "discipline": "Electrical Engineering",
+    "durationWeeks": 8,
+    "credits": 2,
+    "aicteFdpApproved": true,
+    "examRegistrationOpen": true,
+    "examDate": "2026-11-15 (14:00 IST)",
+    "enrollments": 31800,
+    "completionRate": 69,
+    "rating": 4.8,
+    "tags": ["VLSI", "Semiconductors", "RTL", "Hardware"],
+    "overview": "Covers pipelining, parallel processing, retiming, unfolding, systolic arrays, and low-power CMOS digital integrated circuit architectures for modern DSP accelerators.",
+    "weeks": [
+      {
+        "weekNumber": 1,
+        "title": "Iteration Bound, Pipelining and Parallel Processing in FIR Filters",
+        "videoTitle": "Lecture 1.1: Critical Path Reduction & Cutset Retiming",
+        "durationMinutes": 50,
+        "assignmentTitle": "Week 1 Assignment: Critical Path Delay & Pipelined FIR Design",
+        "transcripts": {
+          "en": "[00:00] In high-speed VLSI architectures, throughput is bounded by the longest combinational path between registers. By inserting pipelining latches along a valid feed-forward cutset, we reduce the clock period.",
+          "ta": "[00:00] அதிவேக VLSI வடிவமைப்பில், பைப்லைனிங் (Pipelining) மூலம் கடிகார கால அளவை எவ்வாறு குறைப்பது என்பதை இன்று பார்ப்போம்.",
+          "hi": "[00:00] हाई-स्पीड VLSI आर्किटेक्चर में पाइपलाइनिंग और कटसेट रीटाइमिंग द्वारा क्रिटिकल पाथ डिले को कम करने की विधि।"
+        }
+      }
+    ]
+  },
+  {
+    "id": "noc26-cs05",
+    "code": "NOC26-CS05",
+    "title": "Cloud Computing and Distributed Systems",
+    "instructor": "Prof. Soumya Kanti Ghosh",
+    "institute": "IIT Kharagpur",
+    "discipline": "Computer Science & Engineering",
+    "durationWeeks": 8,
+    "credits": 2,
+    "aicteFdpApproved": false,
+    "examRegistrationOpen": true,
+    "examDate": "2026-11-15 (09:00 IST)",
+    "enrollments": 68400,
+    "completionRate": 79,
+    "rating": 4.75,
+    "tags": ["Cloud", "Distributed Systems", "Virtualization", "Kubernetes"],
+    "overview": "Explores NIST cloud reference architectures, hypervisor virtualization, container orchestration, SLA management, MapReduce, and consensus protocols.",
+    "weeks": [
+      {
+        "weekNumber": 1,
+        "title": "Cloud Service Models (IaaS, PaaS, SaaS) & Virtualization",
+        "videoTitle": "Lecture 1.1: Full Virtualization vs Para-Virtualization",
+        "durationMinutes": 44,
+        "assignmentTitle": "Week 1 Assignment: SLA Availability & Cloud Economics",
+        "transcripts": {
+          "en": "[00:00] Cloud computing transforms computing into a metered utility. We examine Type-1 bare-metal hypervisors, container isolation via Linux namespaces, and multi-tenant resource scheduling.",
+          "ta": "[00:00] கிளவுட் கம்ப்யூட்டிங் அடிப்படைகள், IaaS, PaaS, SaaS மற்றும் மெய்நிகராக்கம் (Virtualization) பற்றி இந்த வாரம் அறிந்து கொள்வோம்.",
+          "hi": "[00:00] क्लाउड कंप्यूटिंग मॉडल (IaaS, PaaS, SaaS) और हाइपरवाइजर वर्चुअलाइजेशन की मूल अवधारणाएं।"
+        }
+      }
+    ]
+  },
+  {
+    "id": "noc26-hs06",
+    "code": "NOC26-HS06",
+    "title": "Patent Law for Engineers and Scientists",
+    "instructor": "Prof. Feroz Ali",
+    "institute": "IIT Madras",
+    "discipline": "Humanities & Management",
+    "durationWeeks": 4,
+    "credits": 1,
+    "aicteFdpApproved": true,
+    "examRegistrationOpen": false,
+    "examDate": "2026-10-25 (09:00 IST)",
+    "enrollments": 29450,
+    "completionRate": 84,
+    "rating": 4.9,
+    "tags": ["IPR", "Patents", "R&D", "Innovation"],
+    "overview": "Designed specifically for academic researchers and engineers to understand patentability criteria, prior art searches, claim drafting, and the Indian Patents Act 1970.",
+    "weeks": [
+      {
+        "weekNumber": 1,
+        "title": "Fundamentals of Intellectual Property & Patentability Criteria",
+        "videoTitle": "Lecture 1.1: Novelty, Inventive Step, and Industrial Application",
+        "durationMinutes": 39,
+        "assignmentTitle": "Week 1 Assignment: Section 3 Non-Patentable Subject Matter in India",
+        "transcripts": {
+          "en": "[00:00] Every engineer innovating in a lab at IIT Madras or industry must understand how to protect inventions. An invention requires novelty, non-obviousness (inventive step), and industrial utility.",
+          "ta": "[00:00] பொறியாளர்கள் மற்றும் விஞ்ஞானிகளுக்கான காப்புரிமைச் சட்டம்: புதிய கண்டுபிடிப்புகளுக்கு காப்புரிமை பெறுவதற்கான அடிப்படைத் தகுதிகள்.",
+          "hi": "[00:00] इंजीनियरों और वैज्ञानिकों के लिए पेटेंट कानून: नवीनता, आविष्कारशील कदम और औद्योगिक उपयोगिता की शर्तें।"
+        }
+      }
+    ]
+  }
+]

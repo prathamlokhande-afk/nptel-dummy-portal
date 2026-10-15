@@ -1,0 +1,76 @@
+{
+  "summary": {
+    "totalLocalChapters": 5420,
+    "activeEnrollmentsSemester": 2845900,
+    "examRegistrationsConfirmed": 942310,
+    "fdpFacultyEnrolled": 118400,
+    "regionalTranslationsAvailable": 16
+  },
+  "chapters": [
+    {
+      "chapterId": "LC-TN-0014",
+      "collegeName": "College of Engineering, Guindy (Anna University)",
+      "city": "Chennai",
+      "state": "Tamil Nadu",
+      "spocName": "Dr. S. Valli (Professor, Dept. of CSE)",
+      "rating": "AAA",
+      "enrolledStudents": 6840,
+      "examRegistered": 4910,
+      "eliteGoldCount": 214,
+      "eliteSilverCount": 890,
+      "fdpCount": 142
+    },
+    {
+      "chapterId": "LC-TN-0042",
+      "collegeName": "PSG College of Technology",
+      "city": "Coimbatore",
+      "state": "Tamil Nadu",
+      "spocName": "Dr. R. Venkatesan (Professor, IT)",
+      "rating": "AAA",
+      "enrolledStudents": 5920,
+      "examRegistered": 4380,
+      "eliteGoldCount": 188,
+      "eliteSilverCount": 760,
+      "fdpCount": 165
+    },
+    {
+      "chapterId": "LC-MH-0108",
+      "collegeName": "COEP Technological University",
+      "city": "Pune",
+      "state": "Maharashtra",
+      "spocName": "Dr. Prachi Joshi (Associate Professor, E&TC)",
+      "rating": "AA",
+      "enrolledStudents": 4310,
+      "examRegistered": 3120,
+      "eliteGoldCount": 119,
+      "eliteSilverCount": 540,
+      "fdpCount": 98
+    },
+    {
+      "chapterId": "LC-KA-0081",
+      "collegeName": "RV College of Engineering",
+      "city": "Bengaluru",
+      "state": "Karnataka",
+      "spocName": "Dr. B. Sathish Babu (Professor, CSE)",
+      "rating": "AAA",
+      "enrolledStudents": 5180,
+      "examRegistered": 3890,
+      "eliteGoldCount": 156,
+      "eliteSilverCount": 680,
+      "fdpCount": 120
+    },
+    {
+      "chapterId": "LC-TS-0029",
+      "collegeName": "JNTUH University College of Engineering",
+      "city": "Hyderabad",
+      "state": "Telangana",
+      "spocName": "Dr. K. Madhavi (Professor, CSE)",
+      "rating": "AA",
+      "enrolledStudents": 4750,
+      "examRegistered": 3290,
+      "eliteGoldCount": 104,
+      "eliteSilverCount": 510,
+      "fdpCount": 112
+    }
+  ]
+}
