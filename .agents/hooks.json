@@ -1,10 +1,30 @@
 {
-  "hooks": [
-    {
-      "event": "post_write_file",
-      "match": "backend/src/data/courses.json",
-      "command": "node .agents/skills/nptel-course-ingestor/scripts/validate-course.mjs",
-      "description": "Automatically validate NPTEL course catalog schema and Bhashini transcript keys whenever courses.json is modified."
-    }
-  ]
+  "nptel-catalog-validator": {
+    "PostToolUse": [
+      {
+        "matcher": "write_to_file|replace_file_content",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node ./hooks/post-edit-verify.mjs",
+            "timeout": 15
+          }
+        ]
+      }
+    ]
+  },
+  "nptel-production-safety-gate": {
+    "PreToolUse": [
+      {
+        "matcher": "run_command",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node ./hooks/pre-command-guard.mjs",
+            "timeout": 10
+          }
+        ]
+      }
+    ]
+  }
 }

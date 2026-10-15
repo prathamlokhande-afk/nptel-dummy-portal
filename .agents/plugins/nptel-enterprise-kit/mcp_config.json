@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "nptel-swayam-registry": {
+      "command": "node",
+      "args": ["../../../scripts/mcp/nptel-swayam-mcp-server.mjs"],
+      "env": {
+        "NPTEL_COORDINATING_INSTITUTE": "IIT Madras",
+        "NPTEL_SEMESTER": "Jul-Nov 2026"
+      }
+    }
+  }
+}
