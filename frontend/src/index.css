@@ -1,0 +1,125 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* --- Modern Web Guidance: browser-ui-theming --- */
+:root {
+  color-scheme: light;
+  accent-color: #990000; /* IIT Madras / NPTEL Crimson */
+  scrollbar-color: #7f1d1d #f1f5f9; /* >= 3:1 contrast against slate-100 track */
+  scrollbar-width: thin;
+}
+
+::selection {
+  background-color: #990000;
+  color: #ffffff;
+}
+
+/* Use :user-invalid and :user-valid rather than :invalid / :valid so untouched inputs do not error on page load */
+input:user-invalid,
+select:user-invalid,
+textarea:user-invalid {
+  border-color: #dc2626;
+  outline-color: #dc2626;
+  background-color: #fef2f2;
+}
+
+input:user-valid {
+  border-color: #16a34a;
+}
+
+/* --- Modern Web Guidance: improve-text-layout-and-legibility --- */
+/* Targeted application of text-wrap: balance ONLY to short heading elements (<= 6 lines) */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  text-wrap: balance;
+}
+
+/* Apply text-wrap: pretty to multi-line body paragraphs and list items to prevent orphaned words ("runts") */
+p,
+blockquote,
+li,
+.pretty-text {
+  text-wrap: pretty;
+}
+
+/* --- Modern Web Guidance: progress-ring --- */
+@property --value {
+  syntax: '<number>';
+  inherits: true;
+  initial-value: 0;
+}
+
+.progress-ring-wrapper {
+  position: relative;
+  display: inline-grid;
+  place-items: center;
+}
+
+progress.progress-ring {
+  --size: 64px;
+  --thickness: 7px;
+  --track-color: #e2e8f0;
+  --fill-color: #990000;
+  --value: attr(value type(<number>));
+  width: var(--size);
+  height: var(--size);
+  appearance: none;
+  -webkit-appearance: none;
+  border-radius: 50%;
+  background: conic-gradient(
+    var(--fill-color) calc(var(--value) * 1%),
+    var(--track-color) 0
+  );
+  background-clip: border-area;
+  border: var(--thickness) solid transparent;
+  background-origin: border-box;
+  transition: --value 0s ease-in-out;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  progress.progress-ring {
+    transition-duration: 0.4s;
+  }
+}
+
+progress.progress-ring[value="100"] {
+  --fill-color: #10b981;
+}
+
+progress.progress-ring::-webkit-progress-bar,
+progress.progress-ring::-webkit-progress-value {
+  display: none;
+  background: none;
+}
+
+progress.progress-ring::-moz-progress-bar {
+  display: none;
+  background: none;
+}
+
+@supports not (background-clip: border-area) {
+  progress.progress-ring {
+    mask-image: radial-gradient(
+      transparent calc(50% - var(--thickness)),
+      black calc(50% - var(--thickness) + 0.5px)
+    );
+    -webkit-mask-image: radial-gradient(
+      transparent calc(50% - var(--thickness)),
+      black calc(50% - var(--thickness) + 0.5px)
+    );
+    border: 0;
+  }
+}
+
+.progress-ring-content {
+  position: absolute;
+  font-weight: 700;
+  font-size: 0.75rem;
+  color: #0f172a;
+  user-select: none; /* Decorative badge overlay only */
+}
