@@ -22,7 +22,9 @@ export const CertificateVerifier: React.FC<CertificateVerifierProps> = ({
     setLoading(true);
     setErrorMessage(null);
     try {
-      const res = await fetch(`/api/certificates/${encodeURIComponent(idToVerify.trim())}/verify`);
+      const res = await fetch(
+        `http://localhost:4000/api/certificates/${encodeURIComponent(idToVerify.trim())}/verify`
+      );
       const json = await res.json();
       if (json.success) {
         setVerifiedCert(json.data);

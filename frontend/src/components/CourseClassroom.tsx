@@ -68,7 +68,7 @@ export const CourseClassroom: React.FC<CourseClassroomProps> = ({
     async function runCalculations() {
       try {
         const [gradeRes, simRes] = await Promise.all([
-          fetch('/api/grading/calculate', {
+          fetch('http://localhost:4000/api/grading/calculate', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
@@ -77,7 +77,7 @@ export const CourseClassroom: React.FC<CourseClassroomProps> = ({
               examScoreOut100,
             }),
           }),
-          fetch('/api/grading/simulate-medals', {
+          fetch('http://localhost:4000/api/grading/simulate-medals', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({

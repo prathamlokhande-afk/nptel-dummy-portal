@@ -1,105 +1,122 @@
-# Presenter Runbook: IIT Madras (NPTEL Dev Team) Live Demo
+# IIT Madras NPTEL Engineering Team — Live Developer Demo Runbook (`v1.1.0`)
 
-This runbook contains your **exact minute-by-minute flow, file links, keyboard shortcuts, and copy-paste prompts** for the live session with the IIT Madras NPTEL engineering team.
-
----
-
-## Pre-Flight Setup (2 Minutes Before Call)
-
-1. Start both the Backend (`:4000`) and Frontend (`:5173`):
-   ```bash
-   npm run dev
-   ```
-2. Open `http://localhost:5173` in Chrome to show the running **NPTEL Online Certification Portal**.
-3. If you want to stage the intentional filter bug for Act 4, run:
-   ```bash
-   npm run demo:stage-hooks
-   ```
-   *(And if you ever want to restore the 100% clean state during the call, run `npm run demo:clean`.)*
+**Starting Point**: The running **`https://nptel.ac.in/`** replica portal (`http://localhost:5173/` + `http://localhost:4000/`) with a 7-commit SDLC Git history (`v1.1.0`).  
+**Target Audience**: Senior Full-Stack, Backend, QA, and DevOps Engineers building NPTEL / SWAYAM at IIT Madras (IC&SR Building).  
+**Core Narrative**: *"How an IIT Madras NPTEL developer uses Google Antigravity across a complete sprint—from onboarding a new semester course to shipping a full-stack feature, catching an accessibility/UI bug in a real browser, and auditing OWASP security before opening a PR."*
 
 ---
 
-## Opening Hook (2 Mins): Tour the NPTEL Portal
-Show the IITM team that you built an authentic replica of their world:
-- **Course Catalog**: Flagship IIT Madras courses (*Prof. Madhavan Mukund's Python/DSA*, *Prof. Mitesh Khapra's Deep Learning*, *Prof. Balaraman Ravindran's ML*), AICTE FDP badges, and Duration filters (`4W / 8W / 12W`).
-- **Course Classroom**: Click **Enter Classroom** on *Programming, Data Structures and Algorithms using Python* (`noc26-cs01`). Click **தமிழ் (Bhashini)** and **हिन्दी (Bhashini)** to show synchronized regional lecture transcripts, then click **Official 25/75 Grading Calculator** and **Exam Medal Target Simulator**.
-- **Verify e-Certificate & Local Chapters (SPOC)**: Click through the top navigation tabs to show verifiable QR certificates (`NPTEL26CS01S1049201`) and the Local Chapter leaderboard (CEG Anna University, PSG Tech, COEP, RVCE).
+## Pre-Flight Commands (2 Minutes Before Joining the Call)
+
+```bash
+# 1. Ensure both Frontend (:5173) and Backend (:4000) dev servers are running:
+npm run dev
+
+# 2. Optional: Stage the live demo bug hook in CourseCatalog.tsx (for Act 5 Browser Debugging)
+#    or restore 100% clean state anytime:
+npm run demo:stage   # injects the subtle AICTE + search filter regression for Act 5
+npm run demo:clean   # restores 100% passing state
+```
+
+- **Frontend URL**: `http://localhost:5173/`
+- **Backend API URL**: `http://localhost:4000/api/health`
 
 ---
 
-## Act 1 (8 Mins): High-Velocity Inner Loop in Antigravity IDE
-**Goal**: Show how Antigravity accelerates the 200 small edits developers make every day—before even using autonomous agents.
+## Part 0: Opening Tour of the `nptel.ac.in` Starting Point (Minutes 0–4)
 
-1. Open [`backend/src/services/gradingService.ts`](../backend/src/services/gradingService.ts).
-2. **Antigravity Tab, Supercomplete & Tab-to-Jump**:
-   - Place your cursor inside `getBestAssignmentCount` or `calculateNptelGrade`.
-   - Start typing a comment or a helper for `topperRank` (e.g., `// Award Top 1% topper badge if totalScoreOut100 >= 95`).
-   - Show how **Supercomplete** proposes the multi-line implementation, **Tab-to-Jump** predicts the next edit location in the return object, and **Tab-to-Import** auto-imports missing symbols.
-3. **Instructive Inline Edit (`⌘+I` / `Ctrl+I`)**:
-   - Highlight the `calculateNptelGrade` function body, press **`⌘+I`**, and paste:
-     > `Add a 'graceMarksApplied: boolean' field that boosts examScoreOut75 from 29.5 to 30.0 if the student scored >= 22/25 in assignments, and update the explanation string.`
-   - Point out the **Inline Red/Green Visual Diff Overlay**—accept or reject right in the editor.
-4. **Inline Code Lenses**:
-   - Click the **"Write Tests"** or **"Explain"** Code Lens right above `calculateNptelGrade`.
+1. **Show the Live Portal (`http://localhost:5173/`)**:
+   - Point out the exact **`https://nptel.ac.in/`** visual architecture:
+     - `60px` white top navbar (`Initiatives ▾`, `Courses ▾`, `Inspired Learners ▾`, `Exams`, `More ▾`, and `#005fff` `Log in`).
+     - Full-bleed dark hero banner (`34+ Lakh Enrollments in July 2026 Semester!`), the 4 signature soft-pink impact cards (`1.86B+ Views`, `3200+ courses`, `3.79Cr+ enrollments`, `7900+ LC colleges`), the 8 IIT/IISc Coordinator crests, and the `News & Announcements` tabs (`#1c93ed`).
+     - Interactive **SWAYAM – NPTEL Course Catalog**, **Classroom with Bhashini Regional Transcripts (English / Tamil / Hindi)**, **Official 25/75 Best-N Grading Calculator**, **QR e-Certificate Verifier**, and **Local Chapter (SPOC) Dashboard**.
+2. **Show the SDLC Git History (`git log --oneline`)**:
+   - Show the team that this wasn't built as a "single messy AI dump"—it follows a 7-stage engineering lifecycle (`chore(init)` → `docs(architecture)` + `ADR-001` → `feat(backend)` → `test(backend)` → `feat(frontend)` → `docs(demo)` → `feat(frontend): official nptel.ac.in alignment`).
 
 ---
 
-## Act 2 (12 Mins): From Faculty Spec + Wireframe to Full-Stack Feature (`/plan`, `@`, Media, Artifacts)
-**Goal**: Show how Antigravity plans and executes multi-file full-stack features safely.
+## Act 1: Codifying IIT Madras Institutional Memory (`GEMINI.md`, `.agents/rules/`, `.agents/hooks.json`) (Minutes 4–10)
 
-1. In the Chat Canvas, drag and drop [`demo-assets/medal-simulator-wireframe.png`](../demo-assets/medal-simulator-wireframe.png).
-2. Copy-paste this prompt with `@` mentions:
-   > `/plan Using @backend/src/routes/courses.ts and @frontend/src/components/CourseClassroom.tsx, add a "Download Hall Ticket & Exam Center Preview" modal inside the Exam Medal Target Simulator tab. Include candidate roll number, IST exam session timing (09:00 AM / 02:00 PM IST), assigned exam city (Chennai / Bengaluru / Pune / Mumbai), and a backend endpoint GET /api/courses/:id/hall-ticket-preview that follows our NPTEL API response standards.`
-3. **Highlight to IITM Engineers**:
-   - Antigravity generates an **Implementation Plan Artifact** with a Mermaid diagram and clickable file links.
-   - Tech leads can review and refine the plan *before* code is written.
-   - Click **Proceed** and highlight the **Terminal Sandbox** running `npm test` automatically to verify nothing broke.
+### Developer Pain Point at NPTEL
+Every time a new developer, project associate, or intern joins the IIT Madras NPTEL team, they have to memorize:
+- *Why does an 8-week course take the **Best 6 of 8** assignments while a 12-week course takes the **Best 8 of 12**?*
+- *Why did a student with `70/75` in the proctored exam still fail?* (Because `assignmentScoreOut25 < 10.0` violates the Dual Qualifying Criterion).
+- *What GIGW 3.0 & WCAG 2.1 AA accessibility rules must every government educational portal follow?*
 
----
-
-## Act 3 (12 Mins): Encoding IIT Madras Team Standards in Git (`.agents/`)
-**Goal**: Show how IIT Madras can onboard new project staff, interns, and full-time developers with zero ramp-up friction.
-
-1. **Hierarchical Workspace Rules (`GEMINI.md` & `.agents/rules/`)**:
-   - Open [`GEMINI.md`](../GEMINI.md), [`.agents/rules/nptel-grading-and-api.md`](../.agents/rules/nptel-grading-and-api.md), and [`.agents/rules/gigw-accessibility.md`](../.agents/rules/gigw-accessibility.md).
-   - Point out how `nptel-grading-and-api.md` enforces the `{ success, nptelMeta, data }` JSON envelope and `noc26-*` course ID validation, while `gigw-accessibility.md` enforces Government of India (GIGW 3.0 / WCAG 2.1 AA) accessibility rules.
-   - Copy-paste this short prompt (notice you don't mention `nptelMeta` or error codes!):
-     > `Add a GET /api/courses/:id/transcripts/:lang endpoint to fetch only a specific regional language transcript (en, ta, or hi) across all weeks of a course.`
-   - Show the audience that Antigravity **automatically** wrapped the response in `sendNptelSuccess` with `nptelMeta` and validated `noc26-*` because of the workspace rule!
-2. **Progressive-Disclosure Custom Skills (`.agents/skills/`)**:
-   - Open [`.agents/skills/nptel-course-ingestor/SKILL.md`](../.agents/skills/nptel-course-ingestor/SKILL.md).
-   - Explain **Progressive Disclosure**: Antigravity only loads the skill's full instructions and scripts when needed, keeping token usage lean.
-   - Copy-paste this prompt:
-     > `Onboard a new 12-week AICTE FDP course by Prof. V. Kamakoti (IIT Madras) titled "Computer Architecture and RISC-V Processor Design" (noc26-cs07) into our catalog with English, Tamil, and Hindi Week 1 transcripts.`
-   - Watch Antigravity read `SKILL.md`, update `courses.json`, and automatically run `node .agents/skills/nptel-course-ingestor/scripts/validate-course.mjs`!
-3. **Lifecycle Hooks (`.agents/hooks.json`) & `/learn`**:
-   - Open [`.agents/hooks.json`](../.agents/hooks.json) to show how `validate-course.mjs` runs automatically whenever `courses.json` is written.
-   - Explain **`/learn`**: Whenever a senior IITM engineer corrects the agent once in chat, typing `/learn` saves that institutional knowledge into a reusable rule or skill.
+### What You Do Live in Antigravity
+1. Open [`GEMINI.md`](../GEMINI.md), [`.agents/rules/nptel-grading-and-api.md`](../.agents/rules/nptel-grading-and-api.md), and [`.agents/rules/gigw-accessibility.md`](../.agents/rules/gigw-accessibility.md).
+2. Explain **Always-On Workspace Rules**: Unlike wiki pages that go stale, `.agents/rules/*.md` are automatically injected into every developer's agent context whenever they touch `backend/src/**` or `frontend/src/**`.
+3. Open [`.agents/hooks.json`](../.agents/hooks.json) and show **Deterministic Guardrails**:
+   - Every time the agent edits a file (`post_write_code`), Antigravity automatically runs `node .agents/skills/nptel-course-ingestor/scripts/validate-course.mjs` and TypeScript typechecking (`tsc --noEmit`).
+4. **Live Prompt to Run**:
+   > *"Check our `.agents/rules/` and explain what would happen if a developer accidentally changed the 8-week assignment calculation in `gradingService.ts` to average all 8 weeks instead of Best 6 of 8."*
 
 ---
 
-## Act 4 (10 Mins): Browser Verification, Accessibility & Generative UI
-**Goal**: Show visual debugging, WCAG accessibility auditing, and inline interactive visualizations.
+## Act 2: Zero-Error Semester Operations with Custom Skills (`nptel-course-ingestor`) (Minutes 10–17)
 
-1. **Generative UI (Inline Interactive Chart in Chat)**:
-   - Copy-paste this prompt:
-     > `Render an interactive visual dashboard right here in the chat comparing our Jul-Nov 2026 courses by enrollment count, completion rate, and AICTE FDP status, including an interactive slider to simulate how a 15% enrollment surge impacts exam center capacity.`
-2. **Browser Automation & Accessibility (`/browser`)**:
-   - If you ran `npm run demo:stage-hooks`, copy-paste:
-     > `Users reported that checking "Show only AICTE Approved FDP Courses" while searching for "Python" in @frontend/src/components/CourseCatalog.tsx returns 0 courses. Find and fix the bug, and verify our filter controls meet GIGW/WCAG accessibility standards.`
+### Developer Pain Point at NPTEL
+Every semester (`Jan–Apr` and `Jul–Nov`), the IIT Madras team onboards hundreds of new courses across 7 IITs and IISc into the catalog, attaching AICTE FDP metadata, UGC credit mappings, and Bhashini regional transcripts (English, Tamil, Hindi). One malformed course code (`cs09` instead of `noc26-cs09`) or missing language key breaks downstream UI views.
+
+### What You Do Live in Antigravity
+1. Open [`.agents/skills/nptel-course-ingestor/SKILL.md`](../.agents/skills/nptel-course-ingestor/SKILL.md) and its validator script [`validate-course.mjs`](../.agents/skills/nptel-course-ingestor/scripts/validate-course.mjs).
+2. Show how a **Skill** combines domain instructions (`SKILL.md`) with executable validation scripts (`scripts/`).
+3. **Live Prompt to Run**:
+   > *"Use our `nptel-course-ingestor` skill to onboard a new 8-week Jul–Nov 2026 course from IIT Madras (`noc26-cs07`): 'Introduction to Quantum Computing and Quantum Information' taught by Prof. Prabha Mandayam (2 credits, AICTE FDP approved, 42,500 enrollments). Include Week 1–8 modules and English, Tamil, and Hindi Bhashini transcript segments for Week 1, then run the catalog validator script."*
+4. **What the IIT Madras Team Sees on Screen**:
+   - Antigravity reads `SKILL.md`, appends `noc26-cs07` to `backend/src/data/courses.json`, runs `validate-course.mjs` (`7 courses compliant`), and `http://localhost:5173/` immediately shows **`Showing 7 of 7 Jul–Nov 2026 Courses`** with working Tamil & Hindi transcripts in the classroom!
 
 ---
 
-## Act 5 (10 Mins): Parallel Subagents & Power Slash Commands
-**Goal**: Show how 1 engineer can orchestrate 3 specialized subagents simultaneously before Exam Results Day.
+## Act 3: Spec-First Feature Engineering & Multimodal UI-to-Code (`/plan`, `/grill-me`, Image-to-Code) (Minutes 17–27)
 
-1. Copy-paste this multi-agent prompt:
-   > `Launch 3 subagents in parallel to prepare our portal for NPTEL Exam Results Day:`
-   > `1. Security Auditor Subagent: Use our nptel-security-checklist skill to audit backend/src/routes/certificates.ts and backend/src/routes/grading.ts for input validation or enumeration risks.`
-   > `2. Test Engineer Subagent: Add unit tests in backend/test/grading.test.ts covering 4-week and 12-week courses and boundary scores (39.4 vs 39.5).`
-   > `3. Documentation Subagent: Generate an API endpoint reference table for our SPOC college partners.`
-2. Open the **Auxiliary Pane → Subagents** in Antigravity 2.0 so the IITM team can watch all 3 subagents executing concurrently and reporting back!
-3. **Quick Tour of Power Slash Commands**:
-   - **`/grill-me`**: Stress-tests your architecture plan through an interactive Q&A interview before writing code.
-   - **`/boost`**: Activates deep multi-perspective reasoning and rigorous verification for complex bugs.
-   - **`/schedule`**: Sets up recurring background jobs (e.g., checking broken video links or summarizing newly filed issues every morning at 9 AM IST).
+### Developer Pain Point at NPTEL
+Before proctored exams, lakhs of students email NPTEL support asking: *"I scored X in my weekly assignments—how much do I need in Sunday's proctored exam to get an Elite + Silver or Elite + Gold medal?"*
+Suppose the product designer hands you a UI wireframe PNG ([`demo-assets/medal-simulator-wireframe.png`](../demo-assets/medal-simulator-wireframe.png)) and says: *"Build this interactive What-If Slider & Target Export card inside the Classroom view."*
+
+### What You Do Live in Antigravity
+1. Show how a senior developer uses **`/grill-me`** or **`/plan`** before writing a single line of code so edge cases (like when `90 - assignmentScoreOut25 > 75`, making `Elite + Gold` mathematically impossible even with `100%` on the exam!) are caught at design time.
+2. Drag-and-drop [`demo-assets/medal-simulator-wireframe.png`](../demo-assets/medal-simulator-wireframe.png) into the Antigravity chat and run:
+   > *"Look at `@demo-assets/medal-simulator-wireframe.png`. In `CourseClassroom.tsx` under the `Exam Medal Target Simulator` tab, add a 'Quick Preset Profile' bar ('Topper Profile', 'Borderline Assignment Profile (9.5/25)', 'Silver Contender') so learners can 1-click test how the Dual Qualifying Criterion affects their required exam score."*
+3. Show how Antigravity updates the React component while preserving GIGW 3.0 accessibility (`aria-live="polite"`, semantic `<progress>`, explicit labels).
+
+---
+
+## Act 4: Parallel Subagent Orchestration (`invoke_subagent`) (Minutes 27–35)
+
+### Developer Pain Point at NPTEL
+When building a cross-cutting feature—say, adding **CSR Exam Fee Waiver Analytics** to the SPOC Local Chapter API (`backend/`), writing `node:test` integration tests (`backend/test/`), and updating the SPOC table (`frontend/`)—doing it sequentially in one context window is slow and mixes concerns.
+
+### What You Do Live in Antigravity
+1. Show how Antigravity spawns **specialized subagents in parallel**:
+   - **Subagent 1 (`research` or Backend Engineer)**: Updates the Express route & data layer.
+   - **Subagent 2 (`Backend QA & Test Engineer`)**: Writes and runs `node:test` HTTP integration assertions (`npm test`).
+   - **Subagent 3 (`browser` subagent)**: Verifies the rendered UI in Chrome.
+2. **Live Prompt to Run**:
+   > *"Spawn two subagents in parallel: have one subagent add a `?minGold=` filter query parameter to `GET /api/spoc/analytics` in `backend/src/routes/spoc.ts`, and have a second QA subagent add an integration test for `GET /api/spoc/analytics?minGold=20` in `backend/test/api.test.ts` and run `npm test`."*
+
+---
+
+## Act 5: Live Visual & Accessibility Debugging with `/browser` + Chrome DevTools MCP (Minutes 35–42)
+
+### Developer Pain Point at NPTEL
+Unit tests pass, TypeScript compiles, yet a subtle frontend filter bug or WCAG accessibility violation slips into production on `nptel.ac.in`.
+
+### What You Do Live in Antigravity
+1. Run `npm run demo:stage` in the terminal (which injects the subtle 1-line filter bug into `CourseCatalog.tsx` where searching `Python` while toggling `AICTE FDP` inverts the boolean check).
+2. **Live Prompt to Run with `/browser`**:
+   > *"/browser Open `http://localhost:5173/`, type `Python` in the course search box, and check the `Show only AICTE Approved FDP Courses` checkbox. Notice that `noc26-cs01` disappears even though it is AICTE FDP approved! Inspect the component, find the bug in `CourseCatalog.tsx`, fix it, and verify in the browser that `noc26-cs01` remains visible."*
+3. Watch the `browser` subagent open `http://localhost:5173/`, reproduce the bug visually, pinpoint line 52 of `CourseCatalog.tsx`, fix the boolean logic, and re-verify in Chrome!
+
+---
+
+## Act 6: Pre-Release OWASP & PII Security Audit (`nptel-security-checklist`) (Minutes 42–48)
+
+### Developer Pain Point at NPTEL
+Public endpoints like `/api/certificates/:certId/verify` and `/api/spoc/analytics` are scraped by bots and handle student roll numbers and academic scores.
+
+### What You Do Live in Antigravity
+1. Open [`.agents/skills/nptel-security-checklist/SKILL.md`](../.agents/skills/nptel-security-checklist/SKILL.md).
+2. **Live Prompt to Run**:
+   > *"Run our `nptel-security-checklist` skill across `backend/src/routes/` to audit input validation, regex strictness on `noc26-*` and certificate IDs, and ensure zero student PII (Aadhaar/phone/email) is exposed in API responses."*
+3. Wrap up by showing `git status`, `git diff`, and the PR checklist in [`.github/pull_request_template.md`](../.github/pull_request_template.md).
